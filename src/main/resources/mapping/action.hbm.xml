@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.jst.objects.event.Action" table="action">
+    <id column="ActionID" name="idAction" type="integer">
+      <generator class="increment"/>
+    </id>
+    <property column="ActionDate" name="date" type="date"/>
+    <property column="ActionHeure" name="time" type="time"/>
+    <property column="ActionLibelle" name="description" type="string"/>
+    <property column="ActionRedacteur" name="redactor" type="string"/>
+  </class>
+</hibernate-mapping>

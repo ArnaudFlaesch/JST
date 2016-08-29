@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.jst.objects.reservation.Reservation" table="reservation">
+        <id column="ClientID" name="idClient" type="integer">
+          <generator class="increment"/>
+        </id>
+        <property column="ARRIVAL" name="arrival" type="date"/>
+        <property column="DEPARTURE" name="departure" type="date"/>
+        <property column="ROOM" name="room" type="integer"/>
+        <property column="NAME" name="name" type="string"/>
+        <property column="FIRST_GUEST_NAME" name="firstName" type="string"/>
+        <property column="SHARED_YN" name="isShared" type="string"/>
+        <property column="ADULTS" name="nbAdults" type="integer"/>
+        <property column="ROOM_CATEGORY_LABEL" name="roomLabel" type="string"/>
+        <property column="PRODUCTS" name="products" type="string"/>
+        <property column="EFFECTIVE_RATE_AMOUNT" name="effectiveRateAmount" type="string"/>
+        <property column="RESV_STATUS" name="reservationStatus" type="string"/>
+        <property column="COMPANY_NAME" name="companyName" type="string"/>
+        <property column="TRAVEL_AGENT_NAME" name="travelAgentName" type="string"/>
+        <property column="SPECIAL_REQUEST" name="specialRequest" type="string"/>
+        <property column="BALANCE" name="balance" type="integer"/>
+        <many-to-one class="com.jst.objects.hotel.Hotel" column="Hotel_HotelID" name="hotel" not-null="true"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="home.xhtml">
+        <ui:define name="body">
+            
+            <ui:include src="search.xhtml" />
+            
+            <br />
+            
+            <p:dataTable value="#{eventsBean.listEvents}" id="listEvents"
+                         paginator="true" paginatorPosition="bottom"
+                         emptyMessage="Aucun évènement trouvé !" selectionMode="single"
+                         rowKey="#{event.idEvent}" var="event" rows="8">
+                <p:ajax event="rowSelect" update=":formNewEvent" />
+                <f:facet name="header">Liste des évènements</f:facet>
+                <p:columnGroup type="header">
+                    <p:column headerText="Numéro" width="60" />
+                    <p:column headerText="Date" width="100" />
+                    <p:column headerText="Heure" width="70" />
+                    <p:column headerText="Chambre" width="70" />
+                    <p:column headerText="Nom Client" />
+                    <p:column headerText="Service associé" />
+                    <p:column headerText="Intitulé" />
+                    <p:column headerText="Statut"  width="70"/>
+                    <p:column headerText="Catégorie" />
+                    <p:column width="10" />
+                </p:columnGroup>
+                <p:column>#{event.idEvent}</p:column>
+                <p:column>#{eventsBean.isoToFr(event.date)}</p:column>
+                <p:column>#{event.time}</p:column>
+                <p:column>#{event.room.number}</p:column>
+                <p:column>#{event.client.firstName} #{event.client.name}</p:column>
+                <p:column>#{event.causeEvent.label}</p:column>
+                <p:column>#{event.label}</p:column>
+                <p:column>#{event.status == 0 ? 'Nouveau' : 'Résolu'}</p:column>
+                <p:column>#{event.categEvent.label}</p:column>
+                <p:column style="color:red;">X</p:column>
+            </p:dataTable>
+            
+            <br />
+            
+            <ui:include src="formNewEvent.xhtml" />           
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:component>
+        <h:form>
+            <p:panelGrid columns="4">
+                <f:facet name="header">Ajout d'un nouvel utilisateur</f:facet>
+
+                <p:outputLabel value="Login" />
+                <p:inputText required="true" value="#{usersBean.user.login}" />
+
+                <p:outputLabel value="Mot de passe" />
+                <p:inputText value="#{usersBean.user.password}" />
+
+                <p:outputLabel value="Nom" />
+                <p:inputText required="true" value="#{usersBean.user.name}" />
+
+                <p:outputLabel value="Prénom" />
+                <p:inputText value="#{usersBean.user.firstName}" />
+
+                <p:outputLabel value="Hôtel" />
+                <p:selectOneMenu>
+                    <f:selectItem itemValue="-1" itemLabel="Sélectionnez un hôtel" />
+                    <f:selectItems value="#{usersBean.listHotel}" var="hotel" itemValue="#{hotel.id}" itemLabel="#{hotel.name}" /> 
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Rôle" />
+                <p:selectOneMenu value="#{usersBean.user.role}">
+                    <f:selectItem itemValue="-1" itemLabel="Sélectionnez un rôle" />
+                    <f:selectItems value="#{usersBean.listRole}" var="role" itemValue="#{role.id}" itemLabel="#{role.label}" /> 
+                </p:selectOneMenu>
+
+                <p:commandButton actionListener="#{usersBean.add()}" value="Valider" />
+                <p:commandButton type="reset" value="Annuler" />
+            </p:panelGrid>
+        </h:form>
+    </ui:component>
+</html>

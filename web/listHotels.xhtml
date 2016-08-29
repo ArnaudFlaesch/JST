@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="home.xhtml">
+        <ui:define name="body">
+            <p:dataTable value="#{hotelBean.hotelList}" selectionMode="single" var="hotel" rows="8" paginatorAlwaysVisible="false" rowKey="#{hotel.id}">
+                <f:facet name="header">Liste des hôtels</f:facet>
+                <p:columnGroup type="header">
+                    <p:column headerText="Nom" />
+                    <p:column headerText="SMTP" />
+                    <p:column headerText="Port" />
+                    <p:column headerText="Login" />
+                    <p:column headerText="Mot de passe" />
+                    <p:column headerText="From Email" />
+                    <p:column headerText="Nom outil" />
+                    <p:column headerText="Nom du PMS" />
+                    <p:column headerText="Chemin de l'import" />
+                </p:columnGroup>
+                <p:column>#{hotel.name}</p:column>
+                <p:column>#{hotel.smtp}</p:column>
+                <p:column>#{hotel.port}</p:column>
+                <p:column>#{hotel.senderLogin}</p:column>
+                <p:column>#{hotel.senderPassword}</p:column>
+                <p:column>#{hotel.mailFrom}</p:column>
+                <p:column>#{hotel.toolName}</p:column>
+                <p:column>#{hotel.pmsName}</p:column>
+                <p:column>#{hotel.pmsLink}</p:column>
+            </p:dataTable>
+            
+            <br />
+            
+            <ui:include src="formNewHotel.xhtml" />
+            
+        </ui:define>
+    </ui:composition>
+</html>
+

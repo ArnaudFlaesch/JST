@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.jst.objects.user.User" table="utilisateur">
+    <id column="UtilisateurID" name="idUser" type="integer">
+      <generator class="increment"/>
+    </id>
+    <property column="UtilisateurNom" name="name" type="string"/>
+    <property column="UtilisateurPrenom" name="firstName" type="string"/>
+    <property column="UtilisateurLogin" name="login" type="string"/>
+    <property column="UtilisateurMotdePasse" name="password" type="string"/>
+    <property column="UtilisateurStatutValue" name="status" type="integer"/>
+    <property column="UtilisateurEmail" name="email" type="string"/>
+    <many-to-one class="com.jst.objects.hotel.Hotel" column="Hotel_HotelID" name="hotel" not-null="true"/>
+    <many-to-one class="com.jst.objects.categories.Role" column="Role_RoleID" name="role" not-null="true"/>
+  </class>
+</hibernate-mapping>

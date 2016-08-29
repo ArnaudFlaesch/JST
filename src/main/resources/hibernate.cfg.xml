@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/jst?useSSL=false</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <mapping resource="mapping/categEvent.hbm.xml"/>
+    <mapping resource="mapping/categOffert.hbm.xml"/>
+    <mapping resource="mapping/causeEvent.hbm.xml"/>
+    <mapping resource="mapping/hotel.hbm.xml"/>
+    <mapping resource="mapping/room.hbm.xml"/>
+    <mapping resource="mapping/event.hbm.xml"/>
+    <mapping resource="mapping/client.hbm.xml"/>
+    <mapping resource="mapping/user.hbm.xml"/>
+    <mapping resource="mapping/role.hbm.xml"/>
+    <mapping resource="mapping/action.hbm.xml"/>
+    <mapping resource="mapping/offert.hbm.xml"/>
+    <mapping resource="mapping/reservation.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition>
+        <h:form>
+            <p:outputLabel>Recherche</p:outputLabel>
+            <p:inputText value="#{eventsBean.contenuRecherche}" />
+            <p:outputLabel>De</p:outputLabel>
+            <p:calendar value="#{eventsBean.dateDebutRecherche}"></p:calendar>
+            <p:outputLabel>A</p:outputLabel>
+            <p:calendar value="#{eventsBean.dateFinRecherche}" />
+            <p:commandButton actionListener="#{eventsBean.rechercheEvent}" update=":listEvents" value="Rechercher" />
+        </h:form>
+    </ui:composition>
+</html>

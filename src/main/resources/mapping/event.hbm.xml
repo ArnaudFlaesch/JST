@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.jst.objects.event.Event" table="evenement">
+    <id column="EvenementID" name="idEvent" type="integer">
+      <generator class="increment"/>
+    </id>
+    <property column="EvenementDate" name="date" type="date"/>
+    <property column="EvenementHeure" name="time" type="time"/>
+    <property column="EvenementIntitule" name="label" type="string"/>
+    <property column="EvenementDescription" name="description" type="string"/>
+    <property column="EvenementRedacteur" name="redactor" type="string"/>
+    <property column="EvenementNotePMS" name="notePMS" type="integer"/>
+    <property column="EvenementStatut" name="status" type="integer"/>
+    <property column="Humeur_HumeurID" name="humor" type="integer"/>
+    <many-to-one class="com.jst.objects.categories.CategEvent" column="CategorieEvenement_CategorieEvenementID" name="categEvent" not-null="true"/>
+    <many-to-one class="com.jst.objects.categories.CauseEvent" column="Cause_CauseID" name="causeEvent" not-null="true"/>
+    <many-to-one class="com.jst.objects.room.Room" column="Chambre_ChambreID" name="room" not-null="true"/>
+    <many-to-one class="com.jst.objects.client.Client" column="Client_ClientID" name="client" not-null="true"/>
+    <many-to-one class="com.jst.objects.hotel.Hotel" column="Hotel_HotelID" name="hotel" not-null="true"/>
+  </class>
+</hibernate-mapping>

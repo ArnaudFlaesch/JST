@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:component>
+        <p:outputLabel value="Statistiques sur les 7 derniers jours" />
+        <p:progressBar value="#{eventsBean.statEventWeek}" />
+        
+        <p:outputLabel value="Statistiques sur les 30 derniers jours" />
+        <p:progressBar value="#{eventsBean.statEventMonth}" />
+        
+        <p:outputLabel value="Statistiques sur l'année" />
+        <p:progressBar value="#{eventsBean.statEventYear}" />
+    </ui:component>
+</html>

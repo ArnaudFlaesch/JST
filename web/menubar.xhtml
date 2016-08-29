@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition>
+        <h:form>
+            <p:menubar>
+                <p:menuitem outcome="listEvents.xhtml" value="Je Sais Tout" />
+                <p:menuitem value="Bonjour #{userBean.user.firstName} #{userBean.user.name}, #{userBean.user.role.label}" />
+                <p:submenu label="Menu">
+                    <p:menuitem value="Gestion des évènements" url="/listEvents.xhtml" />
+                    <p:menuitem value="Gestion des catégories d'évènements" url="/listCategory.xhtml?item=categEvent" rendered="#{userBean.user.role.id ne 2}" />
+                    <p:menuitem value="Gestion des causes d'évènements" url="/listCategory.xhtml?item=causeEvent" rendered="#{userBean.user.role.id ne 2}" />
+                    <p:menuitem value="Gestion des catégories d'offerts" url="/listCategory.xhtml?item=categOffert" rendered="#{userBean.user.role.id ne 2}" />
+                    <p:menuitem value="Gestion des utilisateurs" url="/listUsers.xhtml" rendered="#{userBean.user.role.id ne 2}" />
+                    <p:menuitem value="Gestion des rôles" url="/listCategory.xhtml?item=role" rendered="#{userBean.user.role.id ne 2}" />
+                    <p:menuitem value="Gestion des hôtels" url="/listHotels.xhtml" rendered="#{userBean.user.role.id ne 2}" />
+                    <p:menuitem value="Gestion des chambres" url="/listRooms.xhtml" rendered="#{userBean.user.role.id ne 2}" />
+                </p:submenu>
+                <p:menuitem action="#{userBean.disconnectUser()}" value="Déconnexion" />
+                <p:menuitem value="Manuel" />
+            </p:menubar>
+        </h:form>
+    </ui:composition>
+</html>

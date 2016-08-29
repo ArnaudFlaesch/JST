@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="home.xhtml">
+        <ui:define name="body">
+            <h:form>
+                <p:dataTable value="#{categoryBean.listCateg}" editable="true" rowKey="#{categ.id}" var="categ" rows="8" paginator="true" paginatorAlwaysVisible="false">
+                    <f:facet name="header">#{categoryBean.titrePage}</f:facet>
+                    <p:columnGroup type="header">
+                        <p:column headerText="Numéro" />
+                        <p:column headerText="Libellé" />
+                        <p:column headerText="Modifier" />
+                    </p:columnGroup>
+                    <p:column>#{categ.id}</p:column>
+
+                    <p:column headerText="Libellé">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{categ.label}" />
+                            </f:facet>
+                            <f:facet name="input">
+                                <h:inputText value="#{categ.label}"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column><p:rowEditor /></p:column>
+                </p:dataTable>
+                
+                <br />
+                
+                <p:panelGrid columns = "2">
+                    <f:facet name="header">#{categoryBean.titreAdd}</f:facet>                        
+                    <p:outputLabel value="Libellé" />
+                    <p:inputText value="#{categoryBean.categ.label}" />
+                    <p:commandButton action="#{categoryBean.add()}" value="Valider" />
+                    <p:commandButton type="reset" value="Annuler" />    
+                </p:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

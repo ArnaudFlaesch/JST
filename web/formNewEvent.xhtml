@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:form id="formNewEvent">
+        <p:panelGrid>
+            <p:row>
+                <p:column>
+                    <p:outputLabel value="Statut" />
+                    <p:selectOneMenu value="#{eventsBean.event.status}">
+                        <f:selectItem itemLabel="Nouveau" itemValue="0" />
+                        <f:selectItem itemLabel="Résolu" itemValue="1" />
+                    </p:selectOneMenu>
+                </p:column>
+                <p:column colspan="2">
+                    <p:outputLabel value="Rédacteur" />
+                    <p:selectOneMenu value="#{eventsBean.event.redactor}">
+                        <f:selectItem itemLabel="Sélectionnez le rédacteur" itemValue="-1" />
+                        <f:selectItems value="#{eventsBean.listCauseEvent}" var="cause" itemValue="#{cause.id}" itemLabel="#{cause.label}" />
+                    </p:selectOneMenu>
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Note #{userBean.user.hotel.pmsName}" />
+                    <p:selectOneMenu value="#{eventsBean.event.notePMS}">
+                        <f:selectItem itemLabel="Non" itemValue="0" />
+                        <f:selectItem itemLabel="Oui" itemValue="1" />
+                    </p:selectOneMenu>
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column colspan="4">
+                    <p:outputLabel value="Intitulé" />
+                    <p:inputText value="#{eventsBean.event.label}" />
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column colspan="4">
+                    <p:outputLabel value="Description" />
+                    <p:inputTextarea value="#{eventsBean.event.description}" />
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column>
+                    <p:outputLabel value="Date" />
+                    <p:calendar pattern="dd/MM/yyyy" value="#{eventsBean.event.date}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Heure" />
+                    <p:calendar timeOnly="true"  pattern="HH:mm" value="#{eventsBean.event.time}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Service associé" />
+                    <p:selectOneMenu value="#{eventsBean.event.categEvent}">
+                        <f:selectItem itemLabel="Sélectionnez le service" itemValue="-1" />
+                        <f:selectItems value="#{eventsBean.listCategEvent}" var="categ" itemValue="#{categ.id}" itemLabel="#{categ.label}" />
+                    </p:selectOneMenu>
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column>
+                    <p:outputLabel value="Chambre" />
+                    <p:selectOneMenu value="#{eventsBean.event.room}">
+                        <f:selectItem itemValue="-1" itemLabel="Sélectionnez une chambre" />
+                        <f:selectItems value="#{eventsBean.listRoom}" var="room" itemValue="#{room.id}" itemLabel="#{room.number}" />
+                    </p:selectOneMenu>
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Client" />
+                    <p:selectOneMenu>
+                        <f:selectItem itemLabel="Sélectionnez un client" itemValue="-1" />
+                        <f:selectItems value="#{eventsBean.listCustomer}" var="customer" itemValue="#{customer.id}" itemLabel="#{customer.firstName} #{customer.name}" />
+                    </p:selectOneMenu>
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Nom" />
+                    <p:inputText value="#{eventsBean.event.client.name}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Prénom" />
+                    <p:inputText value="#{eventsBean.event.client.firstName}" />
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column>
+                    <p:outputLabel value="Arrivée" />
+                    <p:calendar pattern="dd/MM/yyyy" value="#{eventsBean.event.client.arrival}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Départ" />
+                    <p:calendar pattern="dd/MM/yyyy" value="#{eventsBean.event.client.departure}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Société" />
+                    <p:inputText value="#{eventsBean.event.client.company}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Agence" />
+                    <p:inputText value="#{eventsBean.event.client.agency}" />
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column>
+                    <p:outputLabel value="Prix" />
+                    <p:inputText type="number" value="#{eventsBean.event.client.price}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Humeur" />
+                    <p:inputText id="number" type="number" disabled="true" value="#{eventsBean.event.humor}" /> 
+                    <p:slider for="number" minValue="0" maxValue="10" />
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column colspan="4">
+                    <p:outputLabel value="Description" />
+                    <p:inputTextarea value="#{eventsBean.action.description}" />
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column>
+                    <p:outputLabel value="Date" />
+                    <p:calendar pattern="dd/MM/yyyy" value="#{eventsBean.action.date}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Heure" />
+                    <p:calendar timeOnly="true"  pattern="HH:mm" value="#{eventsBean.action.time}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Action réalisée par :" />
+                    <p:inputText value="#{eventsBean.action.redactor}" />
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column colspan="4">
+                    <p:outputLabel value="Description" />
+                    <p:inputTextarea value="#{eventsBean.offert.description}" />
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column>
+                    <p:outputLabel value="Montant" />
+                    <p:inputText type="number" value="#{eventsBean.offert.amount}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Accordé par" />
+                    <p:inputText value="#{eventsBean.offert.offertGivenBy}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Rédacteur" />
+                    <p:inputText value="#{eventsBean.offert.redactor}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="Catégorie" />
+                    <p:selectOneMenu value="#{eventsBean.offert.categOffert}">
+                        <f:selectItem itemLabel="Sélectionnez une catégorie" itemValue="-1" />
+                        <f:selectItems value="#{eventsBean.listCategOffert}" var="categOffert" itemValue="#{categOffert.id}" itemLabel="#{categOffert.label}" />
+                    </p:selectOneMenu>
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column>
+                    <p:commandButton actionListener="#{eventsBean.add()}" value="Enregistrer l'évènement"/>    
+                </p:column>
+                <p:column>
+                    <p:commandButton type="reset" value="Annuler la saisie"/>
+                </p:column>
+            </p:row>
+        </p:panelGrid>
+    </h:form>
+</html>
+

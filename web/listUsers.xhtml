@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="home.xhtml">
+        <ui:define name="body">
+            <p:dataTable value="#{usersBean.listUser}" selectionMode="single" var="user" rows="8" paginatorAlwaysVisible="false" rowKey="#{user.idUser}">
+                <f:facet name="header">Liste des utilisateurs</f:facet>
+                <p:columnGroup type="header">
+                    <p:column headerText="Nom" />
+                    <p:column headerText="Prénom" />
+                    <p:column headerText="Login" />
+                    <p:column headerText="Statut" />
+                    <p:column headerText="Email" />
+                    <p:column headerText="Hôtel" />
+                    <p:column headerText="Rôle" />
+                    <p:column headerText="Actions" />
+                </p:columnGroup>
+                <p:column>#{user.name}</p:column>
+                <p:column>#{user.firstName}</p:column>
+                <p:column>#{user.login}</p:column>
+                <p:column>#{user.status == 1 ? 'Actif' : 'Désactivé'}</p:column>
+                <p:column>#{user.email}</p:column>
+                <p:column>#{user.hotel.name}</p:column>
+                <p:column>#{user.role.label}</p:column>
+                <p:column>#{user.status == 1 ? 'Désactiver' : 'Activer'}</p:column>
+            </p:dataTable>
+            
+            <br />
+            
+            <ui:include src="formNewUser.xhtml" />
+        </ui:define>
+    </ui:composition>
+</html>

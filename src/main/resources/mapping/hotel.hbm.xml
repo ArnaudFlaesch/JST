@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.jst.objects.hotel.Hotel" table="hotel">
+        <id column="HotelID" name="id" type="integer">
+            <generator class="increment" />
+        </id>
+        <property column="HotelFrom" name="mailFrom" type="string" />
+        <property column="HotelMailSenderLogin" name="senderLogin" type="string" />
+        <property column="HotelMailSenderMotdePasse" name="senderPassword" type="string" />
+        <property column="HotelName" name="name" type="string" />
+        <property column="HotelOutilNom" name="toolName" type="string" />
+        <property column="HotelPMS_Link" name="pmsLink" type="string" />
+        <property column="HotelPMS_Nom" name="pmsName" type="string" />
+        <property column="HotelPort" name="port" type="integer" />
+        <property column="HotelSMTP" name="smtp" type="string" />
+    </class>
+</hibernate-mapping>
